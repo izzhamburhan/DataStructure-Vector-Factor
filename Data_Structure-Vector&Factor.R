@@ -118,4 +118,129 @@ gender1=factor(c(0,1,1,1,0),label=c("male","female"))
 blood.pres=ordered(c("Low","Medium","High","Low","Low","Medium","Low","High"),levels=c("Low","Medium","High"))
 
 
+##3) Matrices
+#Creating matrices in 3 different ways
 
+#1st way: Matrix(data,nrow,ncol) functions
+m1=matrix(1:6,nrow=2,ncol=3, byrow=T) #T/TRUE
+m1
+#By Default, the matrices constructed by column 
+
+#2nd : using dim() function
+x=c(2,4,6,8,10,12) 
+
+dim(x)=c(2,3) #creating matrices with 2 rows and 3 columns
+dim(x)=c(3,2) #crearing matrices with 3 rows and 2 columns
+
+
+#3rd : using rbind() or cbind()
+k=1:3
+k=seq(1:3)
+
+l=10:12
+length(l)
+
+matrix1=rbind(k,l)
+matrix2=cbind(k,l)
+
+
+#How to select elementss inside matrix
+y=matrix(1:12,nrow=3,ncol=4)
+
+colnames(y)=c("a","b","c","d") #to name the columns
+rownames(y)=c("j","k","l") #to name the row
+
+y[4] #vector
+y[1,3] #to select the element on 1st row and 3rd column
+y[,3]
+y[-1,3] #delete row 1 and column 3
+y[c(1,3),4]
+y[-1,-3]
+y[-c(1,2),]
+y[,c(2,4)]
+y[1,]
+
+
+#matrices can do computation
+
+x=matrix(4:7, nrow=2)
+t(x) #trasnpose
+det(x) #determinant
+diag(x) #diagonal
+solve(x) #inverse matrix
+rowMeans(x) #compute row means
+colMeans(x) #compute colum means
+
+apply(x,1,mean)
+apply(x,2,mean)
+
+x=matrix(4:7, nrow=2);x
+y=matrix(1:6, nrow=2,ncol=3);y
+z=matrix(c(10,20,30,40), nrow=2,byrow=T);z
+2*x
+x+y
+x+z
+x*z
+x%*%y
+y%*%y
+
+t(x)
+t(y)
+t(z)
+
+det(x)
+det(y)
+det(z)
+
+rowMeans(x)
+colMeans(y)
+
+apply(x,1,mean)
+apply(y,2,mean)
+
+
+##4) Array
+#using array() function
+
+a=array(1:24,c(3,4,2));a
+#array with 3 rows, 4 columns, 2 groups
+
+x=1:10
+b=array(x,c(5,2,1));b
+
+##5) Data Frame
+#create a data frame
+
+names=c("Ali","Abu","Siti","Sofia")
+gender=c("male","male","female","female")
+age=c(26,36,45,21)
+occupation=c("doctor","lawyer","doctor","technician")
+
+data=data.frame(names,gender,age,occupation)
+str(data)
+
+data$gender=as.factor(data$gender)
+data$occupation=as.factor(data$occupation)
+
+
+#exercise
+height=c(175,165,150,155,168,153,165,177,180,164,150)
+weigth=c(80,85,50,55,63,45,74,90,86,74,53)
+h_sleep=c(8,7,12,10,9,7,6,7,8,8,11)
+data=data.frame(height,weigth,h_sleep)
+str(data)
+
+summary(data)
+describe(data)
+
+install.packages("Hmisc")
+library(Hmisc)
+
+
+#sort
+s=c(10,15,6,13,18)
+sort(s)
+sort(s,decreasing=T)
+rev(sort(s))
+order(s) #give possition of real data after sorting 
+rank(s) #arrange according to the position of order
